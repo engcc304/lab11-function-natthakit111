@@ -25,10 +25,42 @@
 */
 
 #include <stdio.h>
+#include <math.h>
 
+// ฟังก์ชันสำหรับตรวจสอบว่าเป็น "จำนวนอาร์มสตรอง" หรือไม่
+int isArmstrong(int num) ;
+    
 int main() {
+    int num;
 
-    //--| YOUR CODE HERE
+    // Input
+    printf( "Enter Number: \n" ) ;
+    scanf( "%d", &num ) ;
+
+    // เรียกใช้ฟังก์ชันและตรวจสอบผลลัพธ์
+    if ( isArmstrong( num ) ) {
+        printf( "Pass.\n" ) ;
+    } else {
+        printf( "Not Pass.\n" ) ;
+    }//end if
 
     return 0 ;
-}//end main function
+}//end function
+
+// ฟังก์ชันสำหรับตรวจสอบว่าเป็น "จำนวนอาร์มสตรอง" หรือไม่
+int isArmstrong(int num) {
+    int originalNum, remainder, sum = 0 ;
+    originalNum = num ;
+
+    while ( originalNum != 0 ) {
+        remainder = originalNum % 10 ;
+        sum += pow( remainder, 3 ) ;
+        originalNum /= 10 ;
+    }//end while
+
+    if ( sum == num ) {
+        return 1 ;  // เป็น "จำนวนอาร์มสตรอง"
+    } else {
+        return 0 ;  // ไม่เป็น "จำนวนอาร์มสตรอง"
+    }//end if
+}//end function int isArmstrong
